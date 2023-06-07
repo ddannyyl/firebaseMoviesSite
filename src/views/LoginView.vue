@@ -1,44 +1,55 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useStore } from "../store";
+import { auth, firestore } from "../firebase";
+import {
+  createUser,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { getDoc, doc } from "@firebase/firestore";
 
 const router = useRouter();
-const username = ref("");
-const password = ref("");
+const store = useStore();
+const email = ref("");
+const passwordOne = ref("");
+const passwordTwo = ref("");
 
-const login = () => {
-  if (username.value === "tmdb" && password.value === "movies") {
-    router.push("/purchase");
-  } else {
-    alert("Invalid username/password!");
+const registerViaEmail = async () => {
+  if (passwordOne.value != passwordTwo.value) {
+    alert("Incorrect passwords, they do not match");
+    return;
   }
 };
+
+const { user } = await createUser(auth, email.value, passwordOne.value);
+store.user = user;
+router.push("/purchase");
+
+const loginViaEmail = async () => {
+  try {
+    const { user } = await signInWithEmailAndPassword(
+      auth,
+      email.value,
+      passwordOne.value
+    );
+    store.user = user;
+    router.push("/purchase");
+  } catch (error) {
+    console.log(error);
+  }
+};
+const registerViaGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  const { user } = await signInWithPopup(auth, provider);
+  store.user = user;
+  const { cart } = (await getDoc(doc(firestore, "carts", user.email))).data();
+  store.cart = cart;
+  router.push("/purchase");
+};
 </script>
-
-<template>
-  <div class="login">
-    <div class="comp">
-      <h1>Fakeflix</h1>
-      <h3>Login to explore and purchase</h3>
-    </div>
-
-    <form class="login-container" @submit.prevent="login()">
-      <input
-        class="username"
-        type="text"
-        placeholder="Username"
-        v-model="username"
-      />
-      <input
-        class="pass"
-        type="password"
-        placeholder="Password"
-        v-model="password"
-      />
-      <input class="ent" type="submit" value="Login" />
-    </form>
-  </div>
-</template>
 
 <style>
 .login {
