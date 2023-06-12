@@ -12,7 +12,9 @@ const router = useRouter();
     <div class="logo">
       <img class="image" src="logo.png" alt="" />
     </div>
-    <h1>FakeFlix</h1>
+    <div class="title">
+      <h1>FakeFlix</h1>
+    </div>
   </div>
   <div class="searchbar">
     <input type="text" placeholder="Email address" name="email" />
@@ -21,6 +23,9 @@ const router = useRouter();
 </template>
 
 <style scoped>
+.title {
+  font-size: 24px;
+}
 .header-container {
   display: flex;
   justify-content: center;

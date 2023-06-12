@@ -20,7 +20,7 @@
     <a href="">Legal Notices</a>
   </div>
   <div class="number">
-    <p>Help? Call 1-857-039-732</p>
+    <p>Help? Call 1-800-000-0-000</p>
   </div>
 </template>
 

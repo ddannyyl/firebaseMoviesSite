@@ -31,12 +31,12 @@ const movie = (
           <div class="info">
             <h2>{{ movie.release_date }}</h2>
             <h2>{{ movie.overview }}</h2>
-            <h3
+            <button
               class="but"
               @click="store.addToCart(movie.poster_path, movie.title)"
             >
               Buy
-            </h3>
+            </button>
           </div>
         </div>
       </div>
