@@ -92,6 +92,7 @@ const getTMDBData = async (url, options, page) => {
             currentURL,
             {
               query: search,
+              with_genres: genre,
             },
             page === 1 ? 1 : page--
           )
@@ -106,6 +107,7 @@ const getTMDBData = async (url, options, page) => {
             currentURL,
             {
               query: search,
+              with_genres: genre,
             },
             page >= totalPages ? totalPages : ++page
           )

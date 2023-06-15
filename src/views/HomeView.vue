@@ -6,6 +6,8 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <div>
+    <button>
+    </button>
     <Header />
     <Hero />
     <Footer />
