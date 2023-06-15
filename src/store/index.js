@@ -18,5 +18,8 @@ export const useStore = defineStore("store", {
         cart: this.cart,
       });
     },
+    removeFromCart(index) {
+      this.cart.splice(index, 1);
+    },
   },
 });

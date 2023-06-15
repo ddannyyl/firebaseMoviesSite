@@ -27,7 +27,6 @@ const movie = (
           <div class="tit">
             <h1>{{ movie.title }}</h1>
           </div>
-
           <div class="info">
             <h2>{{ movie.release_date }}</h2>
             <h2>{{ movie.overview }}</h2>
@@ -42,6 +41,11 @@ const movie = (
       </div>
     </div>
   </Teleport>
+
+  <div v-for="(movie, index) in store.cart" :key="index">
+  <h1>{{ movie.title }}</h1>
+  <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster}`" @click="store.openModal(index)" />
+</div>
 </template>
 
 <style scoped>
