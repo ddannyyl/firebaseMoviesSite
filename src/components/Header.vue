@@ -23,11 +23,11 @@ const router = useRouter();
   </div>
 </template>
 
-
 <style scoped>
 .title {
   font-size: 24px;
 }
+
 .header-container {
   display: flex;
   justify-content: center;
@@ -50,7 +50,8 @@ const router = useRouter();
   height: 5rem;
   padding: 2px;
 }
-.login > button {
+
+.login>button {
   position: absolute;
   top: 5em;
   right: 5em;
