@@ -21,6 +21,7 @@ const error = ref(false);
 const error1 = ref("");
 
 const RegisterEmail = () => {
+  
   try {
     error.value = false;
     if (enterPw.value !== confirmPw.value) {
@@ -33,7 +34,6 @@ const RegisterEmail = () => {
       enterPw.value
     );
     store.user = user;
-    router.push("/purchase");
   } catch (e) {
     error.value = true;
   }

@@ -1,5 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
+import logo from "./logo.png";
 
 const router = useRouter();
 </script>
@@ -10,7 +11,7 @@ const router = useRouter();
   </div>
   <div class="header-container">
     <div class="logo">
-      <img class="image" src="logo.png" alt="" />
+      <img class="image" :src="logo" alt="Logo" />
     </div>
     <div class="title">
       <h1>FakeFlix</h1>
@@ -21,6 +22,7 @@ const router = useRouter();
     <button>Go</button>
   </div>
 </template>
+
 
 <style scoped>
 .title {
